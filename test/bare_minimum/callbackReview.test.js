@@ -8,7 +8,7 @@ describe('Callback review', function() {
     var pluckFirstLineFromFile = callbackReview.pluckFirstLineFromFile;
 
     it('should accept a callback as its last argument', function(done) {
-      pluckFirstLineFromFile(__dirname + '/../files/file_to_read.txt', function() {
+      pluckFirstLineFromFile(__dirname + '/../files/file_to_read.txt', function(err, firstLine) {
         // If this asserion gets called, the callback was invoked correctly
         // Otherwise, this test will timeout after 2000ms
         expect(true).to.equal(true);
@@ -48,7 +48,7 @@ describe('Callback review', function() {
     it('should accept a callback as its last argument', function(done) {
       google.get('/').reply(200);
 
-      getStatusCode('https://google.com', function() {
+      getStatusCode('https://google.com', function(err, statusCode) {
         // If this asserion gets called, the callback was invoked correctly
         // Otherwise, this test will timeout after 2000ms
         expect(true).to.equal(true);
